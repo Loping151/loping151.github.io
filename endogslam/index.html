@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Page for EndoGSLAM</title>
+    <link rel="stylesheet" href="../static/css/ppage.css">
+</head>
+
+<body>
+    <div class="bodyhead">
+        <div class="headcontainer">
+            <header class="container-fluid col-12" style="padding: 0px; color: var(--text-black)">
+                <h1>EndoGSLAM: Real-Time Dense Reconstruction and Tracking in Endoscopic Surgeries using Gaussian
+                    Splatting
+                </h1>
+            </header>
+	    
+            <div class="authors">
+                <a href="https://github.com/Loping151"><span>Kailing Wang<sup>1*</sup></span></a>,
+                <a href="."><span>Chen Yang<sup>1*</sup></span></a>,
+                <a href="https://yuehaowang.github.io/"><span>Yuehao Wang<sup>2</sup></span></a>,
+                <a href="."><span>Sikuang Li<sup>1</sup></span></a>,
+                <br>
+                <a href="https://wangyan921.github.io/"><span>Yan Wang<sup>3</sup></span></a>,
+                <a href="http://www.cse.cuhk.edu.hk/~qdou/"><span>Qi Dou<sup>2</sup></span></a>,
+                <a href="https://english.seiee.sjtu.edu.cn/english/detail/842_802.htm"><span>Xiaokang Yang<sup>1</sup></span></a>,
+                <a href="https://shenwei1231.github.io/"><span>Wei Shen<sup>1✉</sup></span></a>
+                <div>
+                    <sup>1</sup>Shanghai Jiao Tong University
+                </div>
+                <div>
+                    <sup>2</sup>The Chinese University of Hong Kong
+                </div>
+                <div>
+                    <sup>3</sup>East China Normal University
+                </div>
+                <div>
+                    <sup>*</sup><small>Equal contribution.</small>
+                </div>
+	    </div>
+	    <br>
+            <nav class="resource-links">
+                <a href="https://arxiv.org/abs/2403.15124">Paper</a>
+                <a href="https://durrlab.github.io/C3VD/">Dataset</a>
+                <a href="https://github.com/endogslam/EndoGSLAM">Code (coming soon)</a>
+                <!-- <a href="poster.pdf">Poster</a> -->
+            </nav>
+        </div>
+    </div>
+    <br>
+    <div class="articlecontrainer">
+        <br>
+        <h2>Online Visualization Demo</h2>
+        <div id="video-container" style="height: 400px;">
+            <video id="video-player" autoplay muted playsinline controls>
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <button id="prev"></button>
+            <button id="next"></button>
+        </div>
+        <div id="dots-container"></div>
+        <br>
+        <h2>Controller Demo</h2>
+        <div class="video-container">
+            <video loop autoplay muted playsinline controls style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                <source src="../static/video/ctrl_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <article>
+            <br>
+            <section class="abstract">
+                <h2>Abstract</h2>
+                <img src="../static/imgs/endogslam/overview.png" alt="Overview" class="img">
+                <br>
+                <div class="paragraph">
+                    <p>Precise camera tracking, high-fidelity 3D tissue reconstruction, and real-time online
+                        visualization are critical for intrabody medical imaging devices such as endoscopes and capsule
+                        robots.
+                        However, existing SLAM (Simultaneous Localization and Mapping) methods often struggle to achieve
+                        both complete high-quality surgical field reconstruction and efficient computation, restricting
+                        their intraoperative applications among endoscopic surgeries.
+                        In this paper, we introduce EndoGSLAM, an efficient SLAM approach for endoscopic surgeries,
+                        which integrates streamlined Gaussian representation and differentiable rasterization to
+                        facilitate over 100 fps rendering speed during online camera tracking and tissue reconstructing.
+                        Extensive experiments show that EndoGSLAM achieves a better trade-off between intraoperative
+                        availability and reconstruction quality than traditional or neural SLAM approaches, showing
+                        tremendous potential for endoscopic surgeries.
+                        <!-- The project page is at <a href="https://EndoGSLAM.loping151.com" style="color: var(--link-color)">https://EndoGSLAM.loping151.com</a> -->
+                    </p>
+                </div>
+            </section>
+
+            <section class="method">
+                <h2>Method</h2>
+                <img src="static/imgs/endogslam/pipeline.png" alt="Overview" class="img">
+                <br>
+                <div class="paragraph">
+                    <p>
+                        EndoGSLAM is an efficient dense RGB-D SLAM method for endoscopic procedures utilizing 3D
+                        Gaussians as
+                        the core representation.
+                        It begins with an innovative modification to the standard 3D Gaussian representation,
+                        initializing
+                        it to adapt to the complex environments encountered in endoscopy.
+                        After the initialization, we leverage differentiable rasterization to enable gradient-based
+                        optimization for optimizing the camera pose in each incoming frame.
+                        We then proceed to expand our 3D Gaussian representation into areas previously unobserved, thus
+                        complementing the scene.
+                        Finally, we propose a partial refinement strategy for efficiently optimizing the expanded 3D
+                        Gaussians.
+                    </p>
+                </div>
+                <br>
+
+            </section>
+
+            <section class="results">
+                <h2>Results and Comparisons</h2>
+                <img src="static/imgs/endogslam/quant.png" alt="Overview" class="img">
+                <br>
+                <div class="paragraph">
+                    <p>The render results of EndoGSLAM compared with traditional and neural SLAM methods. Note that
+                        the results of ORB-SLAM3 and Endo-Depth are acquired using volumic fusion, and ORB-SLAM3 used
+                        only keyframes during fusion, as only keyframes are used to construct the sparse map in ORB-SLAM3.
+                    </p>
+                </div>
+            </section>
+            <br>
+            <h2>Ablation</h2>
+            <div class="video-container">
+                <video loop autoplay muted playsinline controls style="max-width: 100%; max-height: 100%; object-fit: contain; object-position: center;">
+                    <source src="../static/video/aba.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <br>
+            <div class="paragraph">
+                <p>
+                    Simplification plays a vital role in endoscopic scenes. Part (a) of the video displays the online rendering outcomes
+                    for EndoGSLAM-R with and without this process. Lacking simplification, there's a heightened need for optimization, which
+                    not only leads to unwanted view-independent color artifacts and also reduces stability. Part (b) shows the final reconstruction
+                    results of EndoGSLAM-H. </p>
+            </div>
+            <section class="bibtex">
+                <h2>Bibtex</h2>
+		
+                <p>If you find this work helpful, you can cite our paper as follows:</p>
+                
+		<div class="bibcontainer">
+                    <button class="copy-btn" onclick="copyToClipboard()">copy bibtex</button>
+                    <pre>
+    @article{wang2024endogslam,
+        title={EndoGSLAM: Real-Time Dense Reconstruction and Tracking in Endoscopic Surgeries using Gaussian Splatting},
+        author={Kailing Wang and Chen Yang and Yuehao Wang and Sikuang Li and Yan Wang and Qi Dou and Xiaokang Yang and Wei Shen},
+        journal={arXiv preprint arXiv:2403.15124},
+        year={2024}
+    }
+                    </pre>
+                </div>
+		
+                <!-- BibTeX content here -->
+            </section>
+        </article>
+        <footer>
+            <p>If you have any questions or feedback, please contact <a href="mailto:wangkailing151@gmail.com" style="color: var(--link-color)">Kailing Wang</a>.</p>
+        </footer>
+    </div>
+    <script src="../static/js/ppage.js"></script>
+</body>
+
+</html>
