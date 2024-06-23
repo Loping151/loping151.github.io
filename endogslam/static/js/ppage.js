@@ -9,9 +9,9 @@ function copyToClipboard() {
 }
 
 const videos = [
-  "../static/video/3_1.mp4",
-  "../static/video/2_1.mp4",
-  "../static/video/1_1.mp4"
+  "./video/3_1.mp4",
+  "./video/2_1.mp4",
+  "./video/1_1.mp4"
 ];
 let currentIndex = 0;
 
