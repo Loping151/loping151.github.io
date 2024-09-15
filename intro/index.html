@@ -36,8 +36,7 @@
       max-width: 800px;
       margin: 20px auto;
       border-collapse: collapse;
-      background-color: #fff;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      background-color: transparent;
     }
 
     td {
@@ -83,15 +82,46 @@
       font-size: 0.9em;
       color: #777;
     }
+
+    /* Floating Card Style */
+    .floating-card {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 5px 0;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .floating-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .floating-card img {
+      border-radius: 10px;
+      max-width: 180px;
+      margin-right: 20px;
+    }
+
+    .paper-card-content {
+      display: flex;
+      align-items: center;
+    }
+
+    .paper-info {
+      max-width: 70%;
+    }
   </style>
 
   <script type="text/javascript">
     function display(id) {
-      var traget = document.getElementById(id);
-      if (traget.style.display == "none") {
-        traget.style.display = "";
+      var target = document.getElementById(id);
+      if (target.style.display == "none") {
+        target.style.display = "";
       } else {
-        traget.style.display = "none";
+        target.style.display = "none";
       }
     }
   </script>
@@ -103,7 +133,7 @@
       <tr style="padding:0px">
         <td style="padding:2.5%;width:63%;vertical-align:middle">
           <p style="text-align:center">
-            <h1>Kailing Wang</h1>
+          <h1>Kailing Wang</h1>
           </p>
           <p> I am an senior undergraduate student at
             <a href="https://www.sjtu.edu.cn/">Shanghai Jiao Tong University</a>, supervised by Prof. <a href="https://shenwei1231.github.io/">Wei Shen</a>.
@@ -142,71 +172,88 @@
     </tbody>
   </table>
 
+  <!-- Publications Section -->
   <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
-
       <tr>
-        <td style="padding:20px;width:30%;vertical-align:middle">
+        <td style="padding:20px;width:100%;vertical-align:middle">
           <heading>Publications</heading>
         </td>
       </tr>
 
+      <!-- Paper 1 -->
       <tr>
-        <td style="padding:20px;width:30%;vertical-align:middle">
-          <img src='images/endogslam.png' alt="endogslam" width="180" style="border-style: none">
-        </td>
-        <td style="padding:20px;width:70%;vertical-align:middle">
-          <a href="https://arxiv.org/abs/2403.15124">
-            <papertitle>EndoGSLAM</papertitle>
-          </a>
-          <br>
-          <strong>Kailing Wang*</strong>, Chen Yang*, Yuehao Wang, Sikuang Li, Yan Wang, Qi Dou, Xiaokang Yang, Wei Shen
-          <br>
-          <em>MICCAI</em>, 2024
-          <br>
-          <a href="https://loping151.github.io/endogslam/">Page</a> / <a href="https://arxiv.org/abs/2403.15124">Paper</a> /
-          <a href="https://github.com/Loping151/EndoGSLAM">Code</a> / <a href="https://drive.google.com/drive/folders/1wT4cILcbf4TUlWlmK_wJPiIrZ2AqZ43W?usp=drive_link">Data</a>
+        <td>
+          <div class="floating-card">
+            <div class="paper-card-content">
+              <img src='images/endogslam.png' alt="endogslam">
+              <div class="paper-info">
+                <a href="https://arxiv.org/abs/2403.15124">
+                  <papertitle>EndoGSLAM</papertitle>
+                </a>
+                <br>
+                <strong>Kailing Wang*</strong>, Chen Yang*, Yuehao Wang, Sikuang Li, Yan Wang, Qi Dou, Xiaokang Yang, Wei Shen
+                <br>
+                <em>MICCAI</em>, 2024
+                <br>
+                <a href="https://loping151.github.io/endogslam/">Page</a> / <a href="https://arxiv.org/abs/2403.15124">Paper</a> /
+                <a href="https://github.com/Loping151/EndoGSLAM">Code</a> / <a href="https://drive.google.com/drive/folders/1wT4cILcbf4TUlWlmK_wJPiIrZ2AqZ43W?usp=drive_link">Data</a>
+              </div>
+            </div>
+          </div>
         </td>
       </tr>
 
+      <!-- Paper 2 -->
       <tr>
-        <td style="padding:20px;width:30%;vertical-align:middle">
-          <img src='https://raw.githubusercontent.com/Loping151/ForPlane/main/forplanes/images/overview2.jpeg' alt="forplane" width="180" style="border-style: none">
-        </td>
-        <td style="padding:20px;width:70%;vertical-align:middle">
-          <a href="https://ieeexplore.ieee.org/document/10499275/">
-            <papertitle>Efficient Deformable Tissue Reconstruction via Orthogonal Neural Plane</papertitle>
-          </a>
-          <br>
-          Chen Yang, <i>Kailing Wang</i>, Yuehao Wang, Qi Dou, Xiaokang Yang, Wei Shen
-          <br>
-          <em>TMI</em>
-          <br>
-          <a href="https://ieeexplore.ieee.org/document/10499275/">Paper</a> /
-          <a href="https://github.com/Loping151/ForPlane">Code</a> / <a href="https://download.loping151.com/filelist/hamlyn_forplane">Data</a>
+        <td>
+          <div class="floating-card">
+            <div class="paper-card-content">
+              <img src='https://raw.githubusercontent.com/Loping151/ForPlane/main/forplanes/images/overview2.jpeg' alt="forplane">
+              <div class="paper-info">
+                <a href="https://ieeexplore.ieee.org/document/10499275/">
+                  <papertitle>Efficient Deformable Tissue Reconstruction via Orthogonal Neural Plane</papertitle>
+                </a>
+                <br>
+                Chen Yang, <i>Kailing Wang</i>, Yuehao Wang, Qi Dou, Xiaokang Yang, Wei Shen
+                <br>
+                <em>TMI</em>
+                <br>
+                <a href="https://ieeexplore.ieee.org/document/10499275/">Paper</a> /
+                <a href="https://github.com/Loping151/ForPlane">Code</a> / <a href="https://download.loping151.com/filelist/hamlyn_forplane">Data</a>
+              </div>
+            </div>
+          </div>
         </td>
       </tr>
 
+      <!-- Paper 3 -->
       <tr>
-        <td style="padding:20px;width:30%;vertical-align:middle">
-          <img src='images/lerplane.png' alt="lerplane" width="180" style="border-style: none">
-        </td>
-        <td style="padding:20px;width:70%;vertical-align:middle">
-          <a href="https://link.springer.com/chapter/10.1007/978-3-031-43996-4_5">
-            <papertitle>Lerplane: Neural Representations for Fast 4D Reconstruction of Deformable Tissues</papertitle>
-          </a>
-          <br>
-          Chen Yang, <i>Kailing Wang</i>, Yuehao Wang, Xiaokang Yang, Wei Shen
-          <br>
-          <em>MICCAI</em>, 2023 Oral, Young Scientist Award
-          <br>
-          <a href="https://link.springer.com/chapter/10.1007/978-3-031-43996-4_5">Paper</a> /
-          <a href="https://github.com/Loping151/ForPlane">Code</a>
+        <td>
+          <div class="floating-card">
+            <div class="paper-card-content">
+              <img src='images/lerplane.png' alt="lerplane">
+              <div class="paper-info">
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-43996-4_5">
+                  <papertitle>Lerplane: Neural Representations for Fast 4D Reconstruction of Deformable Tissues</papertitle>
+                </a>
+                <br>
+                Chen Yang, <i>Kailing Wang</i>, Yuehao Wang, Xiaokang Yang, Wei Shen
+                <br>
+                <em>MICCAI</em>, 2023 Oral,
+                Young Scientist Award
+                <br>
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-43996-4_5">Paper</a> /
+                <a href="https://github.com/Loping151/ForPlane">Code</a>
+              </div>
+            </div>
+          </div>
         </td>
       </tr>
     </tbody>
   </table>
 
+  <!-- Honors and Awards Section -->
   <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
       <tr>
@@ -222,6 +269,7 @@
     </tbody>
   </table>
 
+  <!-- Academic Services Section -->
   <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
     <tbody>
       <tr>
