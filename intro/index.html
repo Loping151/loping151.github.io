@@ -15,20 +15,25 @@
     /* Global Styles */
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f7f9fc;
+      background-color: #ffffff;
+      /* 更干净的白色背景 */
       color: #333;
+      /* 主体文字颜色 */
       line-height: 1.6;
       margin: 0;
       padding: 0;
     }
 
     a {
-      color: #0073e6;
+      color: #0056b3;
+      /* 较为柔和的蓝色链接 */
       text-decoration: none;
     }
 
     a:hover {
       text-decoration: underline;
+      color: #003366;
+      /* 鼠标悬停时更深的蓝色 */
     }
 
     /* Container Styles */
@@ -36,35 +41,43 @@
       max-width: 800px;
       margin: 20px auto;
       border-collapse: collapse;
-      background-color: #f0f8ff; /* 添加表格的背景颜色 */
-      border-radius: 15px; /* 设置圆角 */
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+      background-color: #fafafa;
+      /* 更柔和的表格背景色 */
+      border-radius: 10px;
+      /* 调整为更小的圆角 */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      /* 阴影稍微缩小 */
     }
 
     td {
-      padding: 5px;
+      padding: 15px;
+      /* 恢复默认的较大内边距 */
       vertical-align: middle;
     }
 
     /* Headings */
     heading {
-      font-size: 1.5em;
+      font-size: 1.6em;
+      /* 略微增大字体 */
       font-weight: bold;
       color: #444;
+      /* 中性灰色标题 */
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     /* News Section */
     strong {
       color: #d9534f;
+      /* 保持亮红色的强调文本 */
     }
 
     /* Publication Titles */
     papertitle {
       font-size: 1.2em;
       font-weight: bold;
-      color: #0073e6;
+      color: #0056b3;
+      /* 与链接保持一致的颜色 */
     }
 
     img {
@@ -87,18 +100,23 @@
 
     /* Floating Card Style */
     .floating-card {
-      background-color: #f3f3f3;
-      border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      background-color: #f9f9f9;
+      /* 更浅的卡片背景 */
+      border-radius: 12px;
+      /* 稍微减少的圆角 */
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      /* 更温和的阴影效果 */
       padding: 20px;
-      margin: 5px 0;
-      position: relative;
+      margin: 10px 0;
+      /* 增加卡片间距 */
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .floating-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+      /* 更小的悬浮效果 */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      /* 稍微加重阴影 */
     }
 
     .floating-card img {
