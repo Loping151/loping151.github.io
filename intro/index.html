@@ -3,22 +3,21 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
   <title>Kailing Wang</title>
 
   <meta name="author" content="Kailing Wang">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="icon" type="image/png" href="images/sjtu.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 
   <style>
     /* Global Styles */
     body {
       font-family: 'Arial', sans-serif;
       background-color: #ffffff;
-      /* 更干净的白色背景 */
       color: #333;
-      /* 主体文字颜色 */
       line-height: 1.6;
       margin: 0;
       padding: 0;
@@ -26,97 +25,69 @@
 
     a {
       color: #0056b3;
-      /* 较为柔和的蓝色链接 */
       text-decoration: none;
     }
 
     a:hover {
       text-decoration: underline;
       color: #003366;
-      /* 鼠标悬停时更深的蓝色 */
     }
 
-    /* Container Styles */
-    table {
+    table, section {
       max-width: 800px;
       margin: 20px auto;
-      border-collapse: collapse;
       background-color: #fafafa;
-      /* 更柔和的表格背景色 */
       border-radius: 10px;
-      /* 调整为更小的圆角 */
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      /* 阴影稍微缩小 */
+      padding: 20px;
+      border-collapse: collapse;
     }
 
     td {
       padding: 15px;
-      /* 恢复默认的较大内边距 */
       vertical-align: middle;
     }
 
-    /* Headings */
     heading {
       font-size: 1.6em;
-      /* 略微增大字体 */
       font-weight: bold;
       color: #444;
-      /* 中性灰色标题 */
       display: block;
       margin-bottom: 15px;
     }
 
-    /* News Section */
     strong {
       color: #d9534f;
-      /* 保持亮红色的强调文本 */
     }
 
-    /* Publication Titles */
     papertitle {
       font-size: 1.2em;
       font-weight: bold;
       color: #0056b3;
-      /* 与链接保持一致的颜色 */
     }
 
-    img {
+    img:not(.cat-gallery) {
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    /* Profile Image */
     img[alt="profile photo"] {
       border-radius: 50%;
       margin-bottom: 20px;
     }
 
-    /* Footer */
-    p[style="text-align:right;font-size:small;"] {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #777;
-    }
-
-    /* Floating Card Style */
     .floating-card {
       background-color: #f9f9f9;
-      /* 更浅的卡片背景 */
       border-radius: 12px;
-      /* 稍微减少的圆角 */
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-      /* 更温和的阴影效果 */
       padding: 20px;
       margin: 10px 0;
-      /* 增加卡片间距 */
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .floating-card:hover {
       transform: translateY(-5px);
-      /* 更小的悬浮效果 */
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      /* 稍微加重阴影 */
     }
 
     .floating-card img {
@@ -133,6 +104,19 @@
     .paper-info {
       max-width: 70%;
     }
+
+    .cat-gallery img {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+    }
+
+    .slick-slide {
+      padding: 10px;
+    }
   </style>
 
   <script type="text/javascript">
@@ -144,6 +128,77 @@
         target.style.display = "none";
       }
     }
+  </script>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+  <!-- Slick Carousel CSS and JS -->
+  <script type="text/javascript">
+    window.onload = function () {
+      const imageFolderUrl = 'https://download.wangkailing151.com/files/cat/';
+      const imageFiles = [
+        '1725286708011.jpg',
+        'IMG_20230519_162917.jpg',
+        'IMG_20230723_164133.jpg',
+        'IMG_20230821_175542.jpg',
+        'IMG_20230825_163246.jpg',
+        'IMG_20230827_093747.jpg',
+        'IMG_20230827_213750.jpg',
+        'IMG_20230902_101447.jpg',
+        'IMG_20230904_144726.jpg',
+        'IMG_20231225_152228.jpg',
+        'MVIMG_20231012_224034.jpg',
+        'MVIMG_20231016_200951.jpg',
+        'MVIMG_20231017_172450.jpg',
+        'MVIMG_20231019_224158.jpg',
+        'MVIMG_20231022_202235.jpg',
+        'MVIMG_20231123_233641.jpg',
+        'MVIMG_20231124_224312.jpg',
+        'MVIMG_20231129_194834.jpg',
+        'MVIMG_20231202_160237.jpg',
+        'MVIMG_20231202_202603.jpg',
+        'MVIMG_20231203_184908.jpg',
+        'MVIMG_20231207_184808.jpg',
+        'MVIMG_20231208_173627.jpg',
+        'MVIMG_20231209_193414.jpg',
+        'MVIMG_20231227_170510.jpg',
+        'MVIMG_20240104_032513.jpg',
+        'MVIMG_20240114_234047.jpg',
+        'MVIMG_20240115_004311.jpg',
+        'MVIMG_20240117_163652.jpg',
+        'MVIMG_20240120_181108.jpg',
+        'MVIMG_20240123_192906.jpg',
+        'MVIMG_20240215_162408.jpg',
+        'MVIMG_20240311_232714.jpg',
+        'MVIMG_20240317_213100.jpg',
+        'MVIMG_20240318_002115.jpg',
+        'MVIMG_20240321_141220.jpg',
+        'MVIMG_20240326_204106.jpg',
+        'MVIMG_20240718_161732.jpg',
+        'MVIMG_20240910_160019.jpg',
+        'Screenshot_2023-09-03-18-50-21-611_com.miui.mediaviewer-edit.jpg',
+      ];
+
+      const gallery = document.querySelector('.cat-gallery');
+      imageFiles.forEach(file => {
+        const img = document.createElement('img');
+        img.src = imageFolderUrl + file;
+        gallery.appendChild(img);
+      });
+
+      $(document).ready(function () {
+        $('.cat-gallery').slick({
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          autoplay: true,
+          autoplaySpeed: 2000,        
+          arrows: true,
+          dots: true
+        });
+      });
+    };
   </script>
 </head>
 
@@ -303,6 +358,13 @@
       </tr>
     </tbody>
   </table>
+
+  <!-- My Cat Gallery Section -->
+  <section style="padding: 20px; text-align:center;">
+    <heading>My Cat</heading>
+    <div class="cat-gallery">
+    </div>
+  </section>
 
 </body>
 
