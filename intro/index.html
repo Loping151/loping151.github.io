@@ -33,7 +33,8 @@
       color: #003366;
     }
 
-    table, section {
+    table,
+    section {
       max-width: 800px;
       margin: 20px auto;
       background-color: #fafafa;
@@ -44,7 +45,7 @@
     }
 
     td {
-      padding: 15px;
+      padding: 1px;
       vertical-align: middle;
     }
 
@@ -80,7 +81,7 @@
       background-color: #f9f9f9;
       border-radius: 12px;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-      padding: 20px;
+      padding: 5px;
       margin: 10px 0;
       transition: transform 0.3s, box-shadow 0.3s;
     }
@@ -105,17 +106,66 @@
       max-width: 70%;
     }
 
+    @media (max-width: 600px) {
+      .paper-card-content {
+        flex-direction: column;
+        align-items: flex-start;
+        /* 确保文字在图片下方排列 */
+      }
+
+      .paper-info {
+        max-width: 100%;
+      }
+
+      .floating-card img {
+        max-width: 100%;
+        /* 图片在小屏幕上占满宽度 */
+      }
+    }
+
     .cat-gallery img {
-      width: 400px;
-      height: 400px;
+      width: auto;
+      height: 200px;
       object-fit: cover;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       margin: 10px;
     }
 
-    .slick-slide {
-      padding: 10px;
+    #lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      /* 水平居中 */
+      align-items: center;
+      /* 垂直居中 */
+    }
+
+    #lightbox img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    #lightbox:target {
+      display: flex;
+    }
+
+    #lightbox .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
     }
   </style>
 
@@ -184,21 +234,40 @@
       imageFiles.forEach(file => {
         const img = document.createElement('img');
         img.src = imageFolderUrl + file;
+        img.setAttribute('onclick', `openLightbox('${img.src}')`);
         gallery.appendChild(img);
       });
 
       $(document).ready(function () {
         $('.cat-gallery').slick({
           infinite: true,
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 3,
           autoplay: true,
-          autoplaySpeed: 2000,        
+          autoplaySpeed: 3000,
           arrows: true,
           dots: true
         });
       });
     };
+
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = src;
+      lightbox.style.display = 'flex';
+      document.getElementById('lightbox').addEventListener('click', function (event) {
+        if (event.target.tagName !== 'IMG') {
+          closeLightbox();
+        }
+      });
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.style.display = 'none';
+    }
+
   </script>
 </head>
 
@@ -238,7 +307,7 @@
   <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
       <tr>
-        <td style="padding:20px;width:100%;vertical-align:middle">
+        <td style="padding:5px;width:100%;vertical-align:middle">
           <heading>News</heading>
           <p> <strong>2024-06:</strong> One paper on medical SLAM is accepted by <em>MICCAI</em> 2024. </p>
           <p> <strong>2021-08:</strong> I enter Shanghai Jiao Tong University.</p>
@@ -251,7 +320,7 @@
   <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
       <tr>
-        <td style="padding:20px;width:100%;vertical-align:middle">
+        <td style="padding:5px;width:100%;vertical-align:middle">
           <heading>Publications</heading>
         </td>
       </tr>
@@ -332,7 +401,7 @@
   <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
       <tr>
-        <td style="padding:20px;width:100%;vertical-align:middle">
+        <td style="padding:5px;width:100%;vertical-align:middle">
           <heading>Honors and Awards</heading>
           <ul>
             <li><strong>2022:</strong> Shao Qiu Scholarship ￥10000</li>
@@ -345,10 +414,10 @@
   </table>
 
   <!-- Academic Services Section -->
-  <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+  <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
       <tr>
-        <td style="padding:20px;width:100%;vertical-align:middle">
+        <td style="padding:5px;width:100%;vertical-align:middle">
           <heading>Academic Services</heading>
           <p><strong>Teaching Assistant:</strong></p>
           <ul>
@@ -360,11 +429,15 @@
   </table>
 
   <!-- My Cat Gallery Section -->
-  <section style="padding: 20px; text-align:center;">
+  <section style="padding: 0px; text-align:center;">
     <heading>My Cat</heading>
     <div class="cat-gallery">
     </div>
   </section>
+
+  <div id="lightbox">
+    <img id="lightbox-img" src="">
+  </div>
 
 </body>
 
