@@ -8,7 +8,7 @@ function display(id) {
 }
 
 window.onload = function () {
-    const imageFolderUrl = 'https://download.wangkailing151.com/files/cat/';
+    const imageFolderUrl = 'https://download.wangkailing151.com/files/openmedia/cat/';
     const txtFileUrl = './img.txt';
     fetch(txtFileUrl)
     .then(response => response.text())
