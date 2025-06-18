@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
+    // 获取完整的路径（如 /xn--ntsp09fr3m.com/kurobbs.html）
     const path = window.location.pathname;
-    const target = path.split('/')[1];
-    if (target && target.includes(".")) {
-      // 如果路径中是 baidu.com 的形式
-      window.location.href = `https://${target}`;
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;  // 去掉开头斜杠
+    if (cleanPath && cleanPath.includes('.')) {
+      // 拆分域名和路径
+      const parts = cleanPath.split('/');
+      const domain = parts.shift(); // 第一个部分作为域名
+      const rest = parts.join('/'); // 剩下作为路径
+
+      const url = `https://${domain}/${rest}`;
+      window.location.href = url;
     } else {
       // 默认跳转
       window.location.href = "https://wangkailing151.com";
