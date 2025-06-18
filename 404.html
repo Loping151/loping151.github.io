@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    const path = window.location.pathname;
+    const target = path.split('/')[1];
+    if (target && target.includes(".")) {
+      // 如果路径中是 baidu.com 的形式
+      window.location.href = `https://${target}`;
+    } else {
+      // 默认跳转
+      window.location.href = "https://wangkailing151.com";
+    }
+  </script>
+</head>
+<body>
+  <p>If you are not redirected, <a href="https://wangkailing151.com">click here</a>.</p>
+</body>
+</html>
